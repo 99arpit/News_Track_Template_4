@@ -14,7 +14,7 @@ const CategoryPage = () => {
     });
     const navigate = useNavigate();
     const { category } = useParams();
-    const { id } = useParams(); 
+    const { id } = useParams();
     const [data, setData] = useState();
     const getData = async () => {
         try {
@@ -42,73 +42,53 @@ const CategoryPage = () => {
                 </div>
             </div>
 
-            <div className="row">
-                <div
-                    className="col-lg-12 py-3 d-flex"
-                    style={{
-                        gap: "15px",
-                        flexWrap: "wrap",
-                        justifyContent: "flex-start",
-                    }}
-                >
-                    {data &&
-                        data.reverse().map((item, index) => {
-                            return (
-                                <div
-                                    key={index}
-                                    className="card"
-                                    style={{ minWidth: "18rem", width: "20rem" }}
-                                >
-                                    <img
-                                        src={`http://174.138.101.222:8080${item.image}`}
-                                        className="card-img-top"
-                                        alt="..."
-                                        style={{ height: "200px" }}
-                                    />
-                                    <div className="card-body  ">
-                                        <h5
-                                            style={{ fontSize: "20px", fontWeight: "700" }}
-                                            className="card-title"
-                                        >
-                                            {item.title}
-                                        </h5>
-                                        <p
-                                            style={{
-                                                fontSize: "15px",
-                                                fontWeight: "500",
+            <div className="album py-5 bg-light">
+                <div className="container">
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        {data &&
+                            data.reverse().map((item, index) => {
+                                return (
+                                    <div className="col-sm-4">
+                                        <div className="card shadow-sm" >
+                                            <img
+                                                className="bd-placeholder-img card-img-top"
+                                                width="100%"
+                                                height={225}
+                                                src={`http://174.138.101.222:8080${item.image}`}
+                                            />
 
-                                                lineClamp: "3",
-                                                overflow: "hidden",
-                                                maxHeight: "80px",
-                                                marginBottom: "40px",
-                                            }}
-                                            className="card-text "
-                                        >
-                                            {item.short_details}
-                                        </p>
-                                        <a
-                                            style={{
-                                                position: "absolute",
-                                                bottom: "10px",
-                                                left: "50%",
-                                                transform: "translate(-50%)",
-                                            }}
-                                            className="btn btn-primary mx-auto d-flex justify-content-center "
-                                            onClick={() => {
-                                                navigate(`/${id}/DetailedNews/${item._id}`, {
-                                                    state: {
-                                                        item: item,
-                                                        agencyDetails: agencyDetails,
-                                                    },
-                                                });
-                                            }}
-                                        >
-                                            Read In Detail
-                                        </a>
+                                            <div className="card-body">
+                                                <h5
+                                                    style={{ fontSize: "20px", fontWeight: "700" }}
+                                                    className="card-title"
+                                                >
+                                                    {item.title.length > 60
+                                                        ? `${item.title.substring(0, 60)}...`
+                                                        : item.title}
+                                                </h5>
+                                                <p className="card-text">
+                                                    {item.short_details.length > 100
+                                                        ? `${item.short_details.substring(0, 100)}...`
+                                                        : item.short_details}
+                                                </p>
+
+                                                <div className="d-flex justify-content-between align-items-center">
+                                                    <button onClick={() => {
+                                                        navigate(`/${id}/DetailedNews/${item._id}`, {
+                                                            state: {
+                                                                item: item,
+                                                                agencyDetails: agencyDetails,
+                                                            },
+                                                        });
+                                                    }} className="btn btn-primary">Read In Detail</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            );
-                        })}
+                                )
+                            }
+                            )}
+                    </div>
                 </div>
             </div>
             <Footer page_name={"Categories_Page"} />

@@ -23,6 +23,7 @@ function EducationSports({ agencyDetails, page_name }) {
 
     const getData = async (categories) => {
         try {
+            console.log(agencyDetails._id, categories)
             const promises = categories.map((category) =>
                 axios.get(
                     `http://174.138.101.222:8080/${agencyDetails._id}/get-Postnews/${category}`
@@ -136,7 +137,7 @@ function EducationSports({ agencyDetails, page_name }) {
                                     )}
                                 </div>
 
-                                <div className="row" style={{marginLeft:"56px"}}>
+                                <div className="row" style={{ marginLeft: "56px" }}>
                                     {item.data
                                         .reverse()
                                         .slice(0, 2)
@@ -147,7 +148,7 @@ function EducationSports({ agencyDetails, page_name }) {
                                                     className="position-relative col-sm-12 col-md-6"
                                                     style={{
                                                         height: "300px",
-                                                        
+
                                                     }}
                                                     onClick={() => {
                                                         // console.log("Img clicked");
@@ -199,7 +200,7 @@ function EducationSports({ agencyDetails, page_name }) {
             </div>
             <div style={{ width: '28%' }} className='col-sm-3'>
                 <div className="pb-3">
-                    <div className="latest_post" style={{display:"contents"}}>
+                    <div className="latest_post" style={{ display: "contents" }}>
                         <h2 className="m-0"><a href="">TRENDING</a></h2>
                     </div>
 
@@ -269,53 +270,106 @@ function EducationSports({ agencyDetails, page_name }) {
                         ad?.image.length > 0 && <img style={{ width: '100%', height: '100%', maxHeight: "350px" }} src={`http://174.138.101.222:8080${ad?.image}`} />
                     }
                 </div>
-                <div className="pb-3">
+                {/* <div className="pb-3">
                     <div className="latest_post">
                         <h2 className="m-0"><a href="">LINKS </a></h2>
                     </div>
-
-
-                    <div className="Social media" style={{ padding: "0px 12px 10px 12px",display:"contents" }}>
-                        <div style={{  marginTop: "17px" }}>
-                            <a href="#" className="icon" style={{ backgroundColor: "rgb(57, 86, 158)", padding: "0.7rem 1.9rem" ,margin:"41px" }}>
+                    <div className="row" style={{ marginTop: '40px' }}>
+                        <div className="col-sm-6 ">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(57, 86, 158)", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
                                 <small class="fa-brands fa-facebook" style={{ color: "white", fontSize: "19px" }}></small>
                                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
                             </a>
-                            <a href="#" className="icon" style={{ backgroundColor: "rgb(82, 170, 244)", padding: "0.7rem 1.9rem",margin:"41px" }}>
+                        </div>
+                        <div className="col-sm-6">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(82, 170, 244)", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
                                 <small class="fa-brands fa-twitter" style={{ color: "white", fontSize: "19px" }} ></small>
                                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
                             </a>
                         </div>
-                        <div style={{ display: "flex", marginTop: "17px", justifyContent: "space-around", textDecoration: "none" }}>
-                            <a href="#" className="icon" style={{ backgroundColor: "rgb(1, 133, 174)", padding: "0.7rem 1.9rem" }}>
+                    </div>
+                    <div className="row" style={{ marginTop: '40px' }}>
+                        <div className="col-sm-6 ">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(1, 133, 174)", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
                                 <small class="fa-brands fa-linkedin-in" style={{ color: "white", fontSize: "19px" }} ></small>
                                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
                             </a>
-
-
-
-                            <a href="#" className="icon" style={{ backgroundColor: "rgb(200, 53, 157", padding: "0.7rem 1.9rem" }}>
+                        </div>
+                        <div className="col-sm-6">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(200, 53, 157", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
                                 <small class="fa-brands fa-instagram" style={{ color: "white", fontSize: "19px" }} ></small>
                                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
                             </a>
                         </div>
-                        <div style={{ display: "flex", marginTop: "17px", justifyContent: "space-around", textDecoration: "none" }}>
-                            <a href="#" className="icon" style={{ backgroundColor: "rgb(220, 71, 46)", padding: "0.7rem 1.9rem" }}>
+                    </div>
+                    <div className="row" style={{ marginTop: '40px' }}>
+                        <div className="col-sm-6 ">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(220, 71, 46)", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
                                 <small class="fa-brands fa-youtube" style={{ color: "white", fontSize: "19px" }} ></small>
                                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
                             </a>
-                            <a href="#" className="icon" style={{ backgroundColor: "rgb(26, 183, 234)", padding: "0.7rem 1.9rem" }}>
+                        </div>
+                        <div className="col-sm-6">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(26, 183, 234)", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
+                                <small class="fa-solid fa-v" style={{ color: "white", fontSize: "19px" }} ></small>
+                                <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
+                            </a>
+                        </div>
+                    </div>
+                </div> */}
+                <div className="pb-3">
+                    <div className="latest_post">
+                        <h2 className="m-0"><a href="">LINKS</a></h2>
+                    </div>
+                    <div className="row" style={{ marginTop: '40px' }}>
+                        <div className="col-md-6">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(57, 86, 158)", padding: "0.7rem 1.9rem", margin: '10px' }}>
+                                <small class="fa-brands fa-facebook" style={{ color: "white", fontSize: "19px" }}></small>
+                                <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
+                            </a>
+                        </div>
+                        <div className="col-md-6">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(82, 170, 244)", padding: "0.7rem 1.9rem", margin: '10px' }}>
+                                <small class="fa-brands fa-twitter" style={{ color: "white", fontSize: "19px" }} ></small>
+                                <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="row" style={{ marginTop: '40px' }}>
+                        <div className="col-md-6">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(1, 133, 174)", padding: "0.7rem 1.9rem", margin: '10px' }}>
+                                <small class="fa-brands fa-linkedin-in" style={{ color: "white", fontSize: "19px" }} ></small>
+                                <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
+                            </a>
+                        </div>
+                        <div className="col-md-6">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(200, 53, 157", padding: "0.7rem 1.9rem", margin: '10px' }}>
+                                <small class="fa-brands fa-instagram" style={{ color: "white", fontSize: "19px" }} ></small>
+                                <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="row" style={{ marginTop: '40px' }}>
+                        <div className="col-md-6">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(220, 71, 46)", padding: "0.7rem 1.9rem", margin: '10px' }}>
+                                <small class="fa-brands fa-youtube" style={{ color: "white", fontSize: "19px" }} ></small>
+                                <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
+                            </a>
+                        </div>
+                        <div className="col-md-6">
+                            <a href="#" className="icon" style={{ backgroundColor: "rgb(26, 183, 234)", padding: "0.7rem 1.9rem", margin: '10px' }}>
                                 <small class="fa-solid fa-v" style={{ color: "white", fontSize: "19px" }} ></small>
                                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
                             </a>
                         </div>
                     </div>
                 </div>
+
             </div>
-            </div>
+        </div >
 
 
-            )
+    )
 }
 
-            export default EducationSports
+export default EducationSports

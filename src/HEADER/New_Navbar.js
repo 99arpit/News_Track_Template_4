@@ -103,7 +103,7 @@ function New_Navbar({ page_name }) {
                                 ad?.text.length > 0 && <p className="mb-0" style={{ border: '1px solid black', width: '100%', height: '100px', overflow: 'hidden' }}>{ad?.text}</p>
                             }
                             {
-                                ad?.image.length > 0 && <img style={{ width: '140%', height: '120px' }} src={`http://174.138.101.222:8080${ad?.image}`} />
+                                ad?.image.length > 0 && <img style={{ width: '100%', height: '120px' }} src={`http://174.138.101.222:8080${ad?.image}`} />
                             }
                         </div>
                     </div>

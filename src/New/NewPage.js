@@ -12,6 +12,7 @@ import {
 } from "react-share";
 
 const NewPage = ({ prop }) => {
+  console.log(prop)
   const dateConverter = (dateStr) => {
     // const dateStr = "2023-07-08";
     const dateObj = new Date(dateStr);
@@ -83,7 +84,7 @@ const NewPage = ({ prop }) => {
               </a>{" "}
               <span>
                 <i className="fa fa-calendar" />
-                {dateConverter(prop.schedule_date)}
+                {dateConverter(prop.createdAt)}
               </span>{" "}
               <a href="#">
                 <i className="fa fa-tags" />
@@ -188,36 +189,43 @@ const NewPage = ({ prop }) => {
           <div className="latest_post">
             <h2 className="m-0"><a href="">FOLLOW US</a></h2>
           </div>
-          <div className="Social media" style={{ padding: "0px 12px 10px 12px", display: "contents" }}>
-            <div style={{ marginTop: "17px" }}>
-              <a href="#" className="icon" style={{ backgroundColor: "rgb(57, 86, 158)", padding: "0.7rem 1.9rem", margin: "41px" }}>
+          <div className="row" style={{ marginTop: '40px' }}>
+            <div className="col-sm-6 ">
+              <a href="#" className="icon" style={{ backgroundColor: "rgb(57, 86, 158)", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
                 <small class="fa-brands fa-facebook" style={{ color: "white", fontSize: "19px" }}></small>
                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
               </a>
-              <a href="#" className="icon" style={{ backgroundColor: "rgb(82, 170, 244)", padding: "0.7rem 1.9rem", margin: "41px" }}>
+            </div>
+            <div className="col-sm-6">
+              <a href="#" className="icon" style={{ backgroundColor: "rgb(82, 170, 244)", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
                 <small class="fa-brands fa-twitter" style={{ color: "white", fontSize: "19px" }} ></small>
                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
               </a>
             </div>
-            <div style={{ display: "flex", marginTop: "17px", justifyContent: "space-around", textDecoration: "none" }}>
-              <a href="#" className="icon" style={{ backgroundColor: "rgb(1, 133, 174)", padding: "0.7rem 1.9rem" }}>
+          </div>
+          <div className="row" style={{ marginTop: '40px' }}>
+            <div className="col-sm-6 ">
+              <a href="#" className="icon" style={{ backgroundColor: "rgb(1, 133, 174)", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
                 <small class="fa-brands fa-linkedin-in" style={{ color: "white", fontSize: "19px" }} ></small>
                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
               </a>
-
-
-
-              <a href="#" className="icon" style={{ backgroundColor: "rgb(200, 53, 157", padding: "0.7rem 1.9rem" }}>
+            </div>
+            <div className="col-sm-6">
+              <a href="#" className="icon" style={{ backgroundColor: "rgb(200, 53, 157", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
                 <small class="fa-brands fa-instagram" style={{ color: "white", fontSize: "19px" }} ></small>
                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
               </a>
             </div>
-            <div style={{ display: "flex", marginTop: "17px", justifyContent: "space-around", textDecoration: "none" }}>
-              <a href="#" className="icon" style={{ backgroundColor: "rgb(220, 71, 46)", padding: "0.7rem 1.9rem" }}>
+          </div>
+          <div className="row" style={{ marginTop: '40px' }}>
+            <div className="col-sm-6 ">
+              <a href="#" className="icon" style={{ backgroundColor: "rgb(220, 71, 46)", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
                 <small class="fa-brands fa-youtube" style={{ color: "white", fontSize: "19px" }} ></small>
                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
               </a>
-              <a href="#" className="icon" style={{ backgroundColor: "rgb(26, 183, 234)", padding: "0.7rem 1.9rem" }}>
+            </div>
+            <div className="col-sm-6">
+              <a href="#" className="icon" style={{ backgroundColor: "rgb(26, 183, 234)", padding: "0.7rem 1.9rem", marginLeft: '10px' }}>
                 <small class="fa-solid fa-v" style={{ color: "white", fontSize: "19px" }} ></small>
                 <a style={{ color: "white", fontSize: "12px", marginLeft: "8px", textDecoration: "none" }} >12,456 fans</a>
               </a>
