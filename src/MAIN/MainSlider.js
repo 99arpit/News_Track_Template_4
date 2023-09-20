@@ -10,14 +10,14 @@ function MainSlider({ agencyDetails, breakingNews, page_name }) {
     const navigate = useNavigate();
     const { id } = useParams();
 
-    const [categories, setCategory] = useState();
+    const [categories, setCategory] = useState([]);
     const getCategories = async () => {
         try {
             const response = await axios.get(
                 "http://174.138.101.222:8080/getmastercategories"
             );
             setCategory(response.data.data);
-            console.log(response.data.data)
+            // console.log(response.data.data)
 
         } catch (error) {
             console.log(error);
@@ -42,6 +42,34 @@ function MainSlider({ agencyDetails, breakingNews, page_name }) {
     useEffect(() => {
         getCategories();
     }, []);
+
+    // pagination start here 
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 7; // Number of items to display per page
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const itemsToShow = categories.slice(startIndex, endIndex);
+
+    const handleNextPage = () => {
+        if (endIndex < categories.length) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const handlePrevPage = () => {
+        if (startIndex > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    const handlePageClick = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const totalPages = Math.ceil(categories.length / itemsPerPage);
+    const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     return (
         <div className="row">
@@ -108,14 +136,14 @@ function MainSlider({ agencyDetails, breakingNews, page_name }) {
                     </div>
                 </div>
             </div>
-            <div style={{width:'28%'}} className="col-sm-3">
+            <div style={{ width: '28%' }} className="col-sm-3">
                 <div className="latest_post">
                     <h2>
                         <span>CATEGORIES</span>
                     </h2>
                 </div>
-                {categories &&
-                    categories.map((item, index) => {
+                {itemsToShow &&
+                    itemsToShow.map((item, index) => {
                         return (
                             <div className="media">
                                 <div
@@ -130,11 +158,48 @@ function MainSlider({ agencyDetails, breakingNews, page_name }) {
                                         )
                                     }
                                 >
-                                    <p style={{color:'white'}} className="align-items-center justify-content-center h4 mb-0 ">{item.categories_Name_Hindi}</p>
+                                    <p style={{ color: 'white' }} className="align-items-center justify-content-center h4 mb-0 ">{item.categories_Name_Hindi}</p>
                                 </div>
                             </div>
                         );
                     })}
+
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                    <nav aria-label="Page navigation example">
+                        <ul className="pagination">
+                            <li className="page-item">
+                                <a className="page-link"
+                                    onClick={handlePrevPage}
+                                    disabled={currentPage === 1}>
+                                    <i className="fa fa-angle-left text-primary mr-2" />
+                                    <i className="fa fa-angle-left text-primary mr-2" />
+                                </a>
+                            </li>
+                            {pageNumbers.map((pageNumber) => (
+                                <li className="page-item">
+                                    <a
+                                        key={pageNumber}
+                                        className={`page-link page-number-button ${pageNumber === currentPage ? 'active' : ''}`}
+                                        onClick={() => handlePageClick(pageNumber)}
+                                    >
+                                        {pageNumber}
+                                    </a>
+                                </li>
+                            ))}
+                            <li className="page-item">
+                                <a className="page-link"
+                                    onClick={handleNextPage}
+                                    disabled={endIndex >= categories.length}>
+                                    <i className="fa fa-angle-right text-primary mr-2" />
+                                    <i className="fa fa-angle-right text-primary mr-2" />
+                                </a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     )

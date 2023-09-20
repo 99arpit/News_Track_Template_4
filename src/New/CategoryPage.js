@@ -62,13 +62,13 @@ const CategoryPage = () => {
                                                     style={{ fontSize: "20px", fontWeight: "700" }}
                                                     className="card-title"
                                                 >
-                                                    {item.title.length > 60
-                                                        ? `${item.title.substring(0, 60)}...`
+                                                    {item.title.length > 30
+                                                        ? `${item.title.substring(0, 30)}...`
                                                         : item.title}
                                                 </h5>
                                                 <p className="card-text">
-                                                    {item.short_details.length > 100
-                                                        ? `${item.short_details.substring(0, 100)}...`
+                                                    {item.short_details.length > 60
+                                                        ? `${item.short_details.substring(0, 60)}...`
                                                         : item.short_details}
                                                 </p>
 
